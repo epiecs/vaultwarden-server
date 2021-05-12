@@ -1,0 +1,48 @@
+version: '3'
+# ref: https://gist.github.com/ju2wheels/1885539d63dbcfb20729
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    expose:
+      - "80"
+      - "8080"
+    volumes:
+      - ./data/vaultwarden:/data
+    restart: on-failure
+    env_file:
+      - ./config/vaultwarden/vaultwarden.env
+    environment:
+      - WEBSOCKET_ENABLED='true'
+
+  nginx:
+    image: nginx:1.15-alpine
+    container_name: nginx
+    restart: always
+    depends_on:
+      - vaultwarden
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config/nginx:/etc/nginx
+      - ./config/ssl:/etc/ssl
+
+  vaultwarden_backup:
+    image: bruceforce/bw_backup:latest
+    container_name: bw_backup
+    restart: on-failure
+    depends_on:
+      - vaultwarden
+    volumes:
+      - ./data/vaultwarden:/data
+      - ./backups:/backup
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ./config/backup/bw_backup.env
+    environment:
+      - DB_FILE=/data/db.sqlite3
+      - BACKUP_FILE=/backup/backup.sqlite3
+      - UID=0
+      - GID=0
