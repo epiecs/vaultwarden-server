@@ -9,7 +9,7 @@ Makes use of the following containers:
 
 All bitwarden data is saved in `data/vaultwarden` and all backups are saved in `backups`.
 
-## Setup
+## Installation and setup
 
 1. Install docker, docker-compose and git
    
@@ -21,6 +21,10 @@ All bitwarden data is saved in `data/vaultwarden` and all backups are saved in `
     sudo usermod -aG docker vaultwarden
     sudo usermod -d /opt/vaultwarden vaultwarden
     sudo usermod -s /bin/bash vaultwarden
+
+    sudo chown -R vaultwarden:vaultwarden /opt/vaultwarden
+    sudo chmod -R 700 /opt/vaultwarden
+    
     cd /opt/vaultwarden
 
     sudo su vaultwarden
