@@ -69,9 +69,3 @@ Have the CSR signed by your CA and put the certificate in the following location
 
 1. `docker-compose pull`
 2. `docker-compose up -d`
-
-## Updating
-TODO
-https://stackoverflow.com/questions/31466428/how-to-restart-a-single-container-with-docker-compose/39501539#39501539
-
-docker compose prune -f?
