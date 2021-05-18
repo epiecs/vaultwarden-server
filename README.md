@@ -82,3 +82,7 @@ You can easily combine the certificate and intermediate certificate in 1 file. J
 
 1. `docker-compose pull`
 2. `docker-compose up -d`
+
+## Sending emails
+
+You can enter the neccesary configuration in `config/vaultwarden/vaultwarden.env`
