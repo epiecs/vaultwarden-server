@@ -83,6 +83,10 @@ You can easily combine the certificate and intermediate certificate in 1 file. J
 1. `docker-compose pull`
 2. `docker-compose up -d`
 
+## Security
+
+After you have created the admin account please set the value of `SIGNUPS_ALLOWED` in the vaultwarden.env file to false.
+
 ## Sending emails
 
 You can enter the neccesary configuration in `config/vaultwarden/vaultwarden.env`. Be sure to fill in the correct domain including the protocol used (http|https) or the invite links won't work.
