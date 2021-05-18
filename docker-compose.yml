@@ -9,7 +9,7 @@ services:
       - "8080"
     volumes:
       - ./data/vaultwarden:/data
-    restart: on-failure
+    restart: always
     env_file:
       - ./config/vaultwarden/vaultwarden.env
     environment:
@@ -31,7 +31,7 @@ services:
   vaultwarden_backup:
     image: bruceforce/bw_backup:latest
     container_name: bw_backup
-    restart: on-failure
+    restart: always
     depends_on:
       - vaultwarden
     volumes:

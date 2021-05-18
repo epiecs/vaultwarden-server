@@ -68,6 +68,15 @@ You can verify the CSR with `openssl req -in config/ssl/requests/vaultwarden.csr
 
 Have the CSR signed by your CA and put the certificate in the following location: `config/ssl/certs/vaultwarden.crt`
 
+#### Converting p7b certificates to crt
+
+`openssl pkcs7 -print_certs -in intermediate.p7b -out intermediate.crt`
+
+#### Adding the intermediate certificate to the vaultwarden certificate
+
+You can easily combine the certificate and intermediate certificate in 1 file. Just remember to place the intermediate certificate behind the vaultwarden certificate.
+
+`cat intermediate.crt >> vaultwarden.crt`
 
 ## Starting the services
 
