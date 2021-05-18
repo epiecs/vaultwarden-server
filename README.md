@@ -85,4 +85,4 @@ You can easily combine the certificate and intermediate certificate in 1 file. J
 
 ## Sending emails
 
-You can enter the neccesary configuration in `config/vaultwarden/vaultwarden.env`
+You can enter the neccesary configuration in `config/vaultwarden/vaultwarden.env`. Be sure to fill in the correct domain including the protocol used (http|https) or the invite links won't work.
